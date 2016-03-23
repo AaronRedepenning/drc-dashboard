@@ -1,0 +1,23 @@
+#page-wrapper {
+    height: 100%;
+    padding-top: 50px;
+}
+
+#navbar-wrapper {
+    background: #00BBD2;
+    height: 50px;
+    width: 100%;
+    position: fixed;
+    z-index: 999;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.26);
+    color: #fff;
+    padding: 0 10px;
+    margin: 0;
+}
+
+#navbar-wrapper a.menu-icon {
+    color: #fff;
+    margin: 10px 5px;
+    position: relative;
+    display: block;
+}
