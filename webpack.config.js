@@ -20,8 +20,18 @@ var webpackConfig = {
 
   module: {
     loaders: [
-      // .ts files for TypeScript
-      { test: /\.ts$/, loader: 'awesome-typescript-loader' },
+        // .js files for Javascript libraries
+        {
+            test: /\.jsx?$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: 'babel',
+            query: {
+            presets: ['es2015'],
+            plugins: ['transform-runtime']
+            }
+        },
+        // .ts files for TypeScript
+        { test: /\.ts$/, loader: 'awesome-typescript-loader' },
 
     ]
   }

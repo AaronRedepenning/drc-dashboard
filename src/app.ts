@@ -1,14 +1,13 @@
+// Import AngularJS Modules
 import {bootstrap} from 'angular2/platform/browser';
-//import {provide} from 'angular2/core';
-//import {HTTP_PROVIDERS} from 'angular2/http';
-import {ROUTER_PROVIDERS, LocationStrategy, HashLocationStrategy} from 'angular2/router';
+import {ROUTER_PROVIDERS} from 'angular2/router';
 
+// Import Custom Modules
 import {DashboardApp} from './app/dashboard-app';
 
-
+// Bootstrap the Application with main view
 bootstrap(DashboardApp, [
-  //HTTP_PROVIDERS,
   ROUTER_PROVIDERS,
-  //provide(LocationStrategy, {useClass: HashLocationStrategy})
 ])
+// For Debuggin Purposes
 .catch(err => console.error(err));

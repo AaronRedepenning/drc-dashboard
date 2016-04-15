@@ -1,0 +1,41 @@
+{
+  "name": "heatmap.js",
+  "version": "2.0.2",
+  "description": "Dynamic JavaScript Heatmaps for the Web",
+  "homepage": "http://www.patrick-wied.at/static/heatmapjs/",
+  "main": "heatmap.min.js",
+  "devDependencies": {
+    "grunt": ">= 0.4.1",
+    "coffee-script": ">= 1.6.3",
+    "grunt-contrib-uglify": ">= 0.2.0",
+    "grunt-contrib-concat": ">= 0.1.3",
+    "grunt-contrib-watch": "0.2.0rc7",
+    "grunt-contrib-jshint": ">= 0.3.0",
+    "grunt-contrib-copy": ">= 0.7.0",
+    "grunt-shell": "^0.7.0"
+  },
+  "keywords": [
+    "heatmap",
+    "heatmaps",
+    "heat map",
+    "heat maps",
+    "googlemaps heatmap",
+    "leaflet heatmap",
+    "leaflet"
+  ],
+  "buildFiles": [
+    "src/config.js",
+    "src/data.js",
+    "src/renderer/canvas2d.js",
+    "src/renderer.js",
+    "src/util.js",
+    "src/core.js"
+  ],
+  "gitHead": "927923d12f4c56332db21401dba3b84d7b613a08",
+  "readme": "# heatmap.js\r\nDynamic Heatmaps for the Web. \r\n\r\n[<img src=\"http://www.patrick-wied.at/static/heatmapjs/assets/img/heatmapjs-examples-docs-banner.jpg\" width=\"100%\">](http://www.patrick-wied.at/static/heatmapjs/?utm_source=gh \"View the heatmap.js website with usage examples, showcases, best practises, plugins ( googlemaps heatmap, leaflet) and more.\")\r\n\r\n## How to get started\r\n\r\nThe fastest way to get started is to install heatmap.js with bower. Just run the following command:\r\n\r\n`bower install heatmap.js-amd`\r\n\r\nThis will download the latest working version of heatmap.js and put it in your bower_components folder.\r\n\r\nAlternatively you could just download [the latest release](https://github.com/pa7/heatmap.js/releases) from github and unzip it.\r\n\r\n\r\nThe file you're ultimately looking for is **heatmap.js** or **heatmap.min.js**\r\n\r\n\r\n\r\nheatmap.js is also hosted on npm:\r\n\r\n`npm install heatmap.js`\r\n\r\n\r\n\r\n### How to run the local examples\r\n\r\nStart a webserver (e.g. python SimpleHTTPServer from the project directory root):\r\n\r\n`python -m SimpleHTTPServer 1337 &`\r\n\r\nThen browse to \r\n\r\n`http://localhost:1337/examples/`\r\n\r\n\r\n## Get involved\r\n\r\nPlease have a look at the [contribution guidelines](CONTRIBUTE.md) before submitting contributions. \r\n\r\n**Disclaimer**: PRs can take time to receive feedback or be merged ( I'm only one person with very little time ) but I'm trying to get back to everyone eventually\r\n\r\n## Questions?\r\n\r\nIn order to keep technical questions in a central place where other people can learn from it, the best thing you can do is [post your question to stackoverflow with the tag **heatmap.js**.](http://stackoverflow.com/questions/ask?tags=heatmap.js) \r\n\r\nIf you do have a very specific question (or need commercial support) don't hesitate to contact me directly [via email](mailto:heatmap-q@patrick-wied.at).\r\n\r\n\r\n## Mailing list\r\n\r\nWant to receive the latest updates and news about heatmap.js? \r\n\r\nThere is a [mailing list](http://eepurl.com/0mmV5). No spam, just news and important updates.\r\n",
+  "readmeFilename": "README.md",
+  "_id": "heatmap.js@2.0.2",
+  "_shasum": "065330297120c1d69c6b75393c4a2b606f26b152",
+  "_from": "git+https://github.com/pa7/heatmap.js.git",
+  "_resolved": "git+https://github.com/pa7/heatmap.js.git#927923d12f4c56332db21401dba3b84d7b613a08"
+}
