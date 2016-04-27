@@ -5,6 +5,9 @@ import {Router, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 // Import Custom TypeScript Modules
 import { Home } from './components/home/home';
 import { FluxMap } from './components/flux-map/flux-map';
+import { Admin } from './components/admin/admin';
+import { Performance } from './components/performance/performance';
+import { Charts } from './components/charts/charts';
 
 // DashboardApp module decorator (meta-data)
 @Component({
@@ -18,13 +21,14 @@ import { FluxMap } from './components/flux-map/flux-map';
 
 // Angular JS Router and registered routes
 @RouteConfig([
-  { path: '/home',       component: Home,        name: 'Home', useAsDefault: true },
-  { path: '/flux-map',   component: FluxMap,     name: 'FluxMap'},
+  { path: '/home',        component: Home,        name: 'Home', useAsDefault: true },
+  { path: '/flux-map',    component: FluxMap,     name: 'FluxMap'},
+  { path: '/admin',       component: Admin,       name: 'Admin'},
+  { path: '/performance', component: Performance, name: 'Performance'},
+  { path: '/charts',     component:  Charts,      name: 'Charts'}
 ])
 
 // DashboardApp Class
 export class DashboardApp {
-
-  constructor() {}
-
+  constructor(public router: Router) {}
 }

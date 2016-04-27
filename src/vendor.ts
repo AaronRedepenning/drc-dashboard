@@ -20,3 +20,5 @@ import 'leaflet/dist/leaflet';
 // HeatmapJS - Used for generating the fluxmap
 // import 'heatmap.js/build/heatmap';
 // import 'heatmap.js/plugins/leaflet-heatmap';
+
+import 'chartist/dist/chartist';

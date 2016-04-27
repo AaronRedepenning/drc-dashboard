@@ -1,18 +1,17 @@
-// Import AngularJS Modules
-import {Component} from 'angular2/core';
+// Import angular2 modules
+import { Component } from 'angular2/core';
 
-// Import Custom Modules
+// Import custom modules
 
-// Home Component Decorator (meta-data)
 @Component({
-  selector: 'home',
-  templateUrl: 'app/components/home/home.html',
-  styleUrls: ['app/components/home/home.css']
+    templateUrl: 'app/components/home/home.html',
+    styleUrls: [ 'app/components/home/home.css' ],
+    selector: 'home'
 })
 
-// Home Class
+/**
+ * Home
+ */
 export class Home {
-
-  constructor() {}
-
+    constructor() { }
 }

@@ -1,0 +1,24 @@
+{
+  "name": "drc-dashboard",
+  "description": "A Web Dashboard for DRC's building automation project",
+  "main": "app.ts",
+  "authors": [
+    "Aaron Redepenning <rede3704@stthomas.edu>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/AaronRedepenning/drc-dashboard",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "src/app/bower_components/",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "heatmap.js-amd": "*",
+    "chartist-plugin-axistitle": "^0.1.0",
+    "chartist": "^0.9.7"
+  }
+}

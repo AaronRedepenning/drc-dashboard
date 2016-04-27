@@ -3,5 +3,38 @@
 body {
     margin: 0;
     padding: 0;
-    background: #FAFAFA;
+    background: #F4F5F9;
+    font-family: 'Raleway', sans-serif;
+}
+
+/******************************************************
+** Global Styles for Theme
+******************************************************/
+
+/* Panels */
+.panel {
+    background-color: #fff;
+    border: 1px solid #e7ecf1;
+    border-radius: 5px;
+}
+
+.panel-title {
+    padding: 0 10px;
+    border-bottom: solid 1px #e7ecf1;
+}
+
+.panel-title h3 {
+    display: inline-block;
+}
+
+.panel-tools {
+    padding: 12px 0;
+}
+
+.panel-tools a {
+    
+}
+
+.panel-body {
+    padding: 15px;
 }

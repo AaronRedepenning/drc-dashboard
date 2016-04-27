@@ -12,10 +12,10 @@ import * as L from 'leaflet';
     styleUrls: [ 'app/components/flux-map/flux-map.css' ]
 })
 
-export /**
+/**
  * FluxMap
  */
-class FluxMap {
+export class FluxMap {
     
     intervalID : any;
     

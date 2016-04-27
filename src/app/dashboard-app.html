@@ -1,10 +1,32 @@
-<!-- Sidebar -->
+<!-- Navbar -->
 <header id="navbar-wrapper">
-    <a href="" class="menu-icon">
-        <i class="material-icons material-spec-icon" title="Show navigation">menu</i>
-    </a>
+    <div class="top-row row">
+        <div class="navbar-brand">
+            Design Ready Controls
+        </div>  
+    </div>
+    
+    <div class="row">
+        <ul class="nav navbar-nav">
+            <li>
+                <a [routerLink]="['Home']" [class.active]="router.isRouteActive(router.generate(['/Home']))">Home</a>
+            </li>
+            <li>
+                <a [routerLink]="['FluxMap']" [class.active]="router.isRouteActive(router.generate(['/FluxMap']))">Flux Map</a>
+            </li>
+            <li>
+                <a [routerLink]="['Charts']" [class.active]="router.isRouteActive(router.generate(['/Charts']))">Current Conditions</a>
+            </li>
+            <li>
+                <a [routerLink]="['Performance']" [class.active]="router.isRouteActive(router.generate(['/Performance']))">Performance</a>
+            </li>
+            <li>
+                <a [routerLink]="['Admin']" [class.active]="router.isRouteActive(router.generate(['/Admin']))">Admin</a>
+            </li>
+        </ul>
+    </div>
 </header>
-<!--/ Sidebar -->
+<!--/ Navbar -->
 
 <div id="page-wrapper">
     <div class="content-wrapper">
