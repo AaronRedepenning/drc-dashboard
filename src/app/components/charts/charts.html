@@ -1,66 +1,15 @@
 <div class="row">
     <div class="col-md-12">
-        <h2 class="location-header">
-            <i class="material-icons">rss_feed</i>
-            <strong>NODEIDSTRING</strong>
-        </h2>
-        <h2 class="location-data">
-            Node Location:
-            <span id="lat">60</span>,
-            <span id="lng">-21</span>,
-            <span id="hgt">11</span> <span>feet</span>
-        </h2>
-    </div>
-</div>
-
-<div class="row">
-    <div class="col-md-6" id="current-conditions">
-        <div class="tile">
-            <h3 class="online-status">
-                <strong>Current Conditions</strong>
-                <span class="minor">
-                    Last Reported 
-                    <span id="update-time">4</span> 
-                    minutes ago
-                </span>
-            </h3>
+        <div class="panel">
+            <div class="panel-title">
+                <h3>Charting Title</h3>
+            </div>
             
-            <!-- Current Weather Data -->
-            <div class="row">
-                <div class="col-xs-6 cur-temp">
-                    <span class="value">50.4</span>
-                    <span class="unit">°F</span>
-                </div>
+            <div class="panel-body">
+                <div class="ct-chart ct-golden-section" id="theChart"></div>
             </div>
-            <div class="row">
-                <div class="col-sm-6">
-                    <div class="cur-hum">
-                        <strong class="name">Humidity:</strong>
-                        <span class="value">60</span>
-                        <span class="unit">% RH</span>
-                    </div>
-                    <div class="cur-pres">
-                        <strong class="name">Pressure:</strong>
-                        <span class="value">1032.4</span>
-                        <span class="unit">kPa</span>
-                    </div>
-                </div>
-                <div class="col-sm-6">
-                    <div class="cur-dew">
-                        <strong class="name">Dew Point:</strong>
-                        <span class="value">48</span>
-                        <span class="unit">°F</span>
-                    </div>
-                    <div class="cur-co2">
-                        <strong class="name">Carbon Dioxide:</strong>
-                        <span class="value">1200</span>
-                        <span class="unit">ppm</span>
-                    </div>
-                </div>
-            </div>
-            <!-- /Current Weather Data -->
         </div>
     </div>
 </div>
 
-<div class="ct-chart ct-golden-section" id="theChart"></div>
+

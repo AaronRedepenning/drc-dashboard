@@ -37,7 +37,7 @@ export class FluxMap {
         // 2) Start building heatmap with HeatmapJS
         let config : HeatmapConfiguration = {
             // radius should be small ONLY if scaleRadius is true (or small radius is intended)
-            "radius": 10,
+            "radius": 60,
             "maxOpacity": .75, 
             // scales the radius based on map zoom
             "scaleRadius": true, 
@@ -50,7 +50,8 @@ export class FluxMap {
             // which field name in your data represents the longitude - default "lng"
             lngField: 'x',
             // which field name in your data represents the data value - default "value"
-            valueField: 'val'
+            valueField: 'val',
+            blur: 1
         };
         
         var heatmapLayer = new HeatmapOverlay(config);
@@ -68,7 +69,7 @@ export class FluxMap {
             scrollWheelZoom: false
         });
         fluxmap.fitBounds(bounds);
-        
+                
         // Generate some random data for fluxmap
         this.setRandomData(height, width, heatmapLayer);
         
@@ -91,22 +92,24 @@ export class FluxMap {
     }
     
     private getRandomData(height : number, width : number) : HeatmapData {
-        var length = 2000;
-        var max = 0;
-        var min = 100;
+        var rows = 10;
+        var colums = 5;
+        var length = 50; // Asuming 50 sensor nodes in the facility
+        var max = 100;     // Ranging from 0 - 80 deg F
+        var min = 0;
         var points : HeatmapDataPoint[] = [];
         
-        while(length--) {
-            var value = Math.floor(Math.random() * 100);
-            max = Math.max(value, max);
-            min = Math.min(value, min);
-            
-            let point : HeatmapDataPoint = {
-                y: Math.floor(Math.random() * height),
-                x: Math.floor(Math.random() * width),
-                val: value
-            };
-            points.push(point);
+        for(var i = (height / colums) / 2; i < height; i += (height / colums)) {
+            for(var j = (width / rows) / 2; j < width; j += (width / rows)) {
+                var value = 60 + 40 * (Math.random() - 0.5);
+                
+                let point : HeatmapDataPoint = {
+                    y: i,
+                    x: j,
+                    val: value
+                };
+                points.push(point);
+            }
         }
         
         let randomData : HeatmapData = {
@@ -116,5 +119,14 @@ export class FluxMap {
         };
         
         return randomData;
+    }
+    
+    public toggleFullscreen() {
+        var elem = document.getElementById('fluxmap');
+        if(elem.requestFullscreen) {
+            elem.requestFullscreen();
+        } else if (elem.webkitRequestFullScreen) {
+            elem.webkitRequestFullScreen();
+        } 
     }
 }

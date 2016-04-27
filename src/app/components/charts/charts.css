@@ -1,0 +1,9 @@
+.ct-chart {
+    margin-bottom: 1rem;
+}
+
+.ct-golden-section:before {
+    display: block;
+    position: relative;
+    width: 100%;
+}

@@ -18,6 +18,7 @@ export class Charts {
     ChartData: Chartist.IChartistData;
     ChartOptions: Chartist.ILineChartOptions;
     CurrentTime: number;
+    intervalID: any;
     
     constructor() { }
     
@@ -63,7 +64,7 @@ export class Charts {
         this.Chart = new Chartist.Line('#theChart', this.ChartData, this.ChartOptions);
         
         // Register interval for real time chart 
-        setInterval(()=>{
+        this.intervalID = setInterval(()=>{
             if(this.ChartData.labels.length > 0) {
                 (<number[][]>this.ChartData.series)[0].shift();
                 this.ChartData.labels.shift();   
@@ -75,6 +76,10 @@ export class Charts {
             this.Chart.update(this.ChartData, this.ChartOptions);
         }, 1000);
         
+    }
+    
+    ngOnDestroy() {
+        clearInterval(this.intervalID);
     }
     
     generateRandomData(length: number): Chartist.IChartistData {
