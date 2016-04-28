@@ -19,6 +19,7 @@
   "dependencies": {
     "heatmap.js-amd": "*",
     "chartist-plugin-axistitle": "^0.1.0",
-    "chartist": "^0.9.7"
+    "chartist": "^0.9.7",
+    "d3": "^3.5.16"
   }
 }

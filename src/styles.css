@@ -14,7 +14,7 @@ body {
 /* Panels */
 .panel {
     background-color: #fff;
-    border: 1px solid #e7ecf1;
+    border: 1px solid rgba(0,0,0,.12);
     border-radius: 5px;
 }
 
@@ -25,6 +25,10 @@ body {
 
 .panel-title h3 {
     display: inline-block;
+}
+
+.panel-title .subtitle {
+    color: #379AC5;
 }
 
 .panel-tools {

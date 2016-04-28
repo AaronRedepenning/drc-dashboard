@@ -32,6 +32,7 @@
     "babel-loader": "^6.2.4",
     "chartist": "^0.9.7",
     "core-js": "^2.2.0",
+    "d3": "^3.5.16",
     "heatmapjs": "git+https://github.com/pa7/heatmap.js.git",
     "leaflet": "^0.7.7",
     "normalize.css": "^4.0.0",

@@ -16,6 +16,13 @@
     padding: 0 50px;
 }
 
+#navbar-wrapper .top-row .navbar-brand {
+    font-family: 'Lato', sans-serif;
+    text-transform: uppercase;
+    font-weight: 700;
+    font-size: 24px;
+}
+
 #navbar-wrapper ul {
     margin-left: 50px;
 }
