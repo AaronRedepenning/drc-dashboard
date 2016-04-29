@@ -1,0 +1,108 @@
+/***
+* Table of Contents:
+*
+*
+*
+***/
+
+/* =================================================================
+**               Section: Temperature Value Styles
+*===================================================================*/
+.cur-temp {
+    padding: 5% 5% 5% 20%;
+    color: #71bc3c;
+    font-weight: 700;
+}
+
+.cur-temp .cur-temp-val {
+    font-size: 72px;
+}
+
+.cur-temp .cur-temp-unit {
+    font-size: 48px;
+    vertical-align: super;
+    line-height: 75px;
+    padding-left: 10px;
+}
+
+/* =================================================================
+**               Section: Sensor Data Styles
+*===================================================================*/
+
+.sensor-data {
+    padding: 7px 20px;
+    font-family: 'Lato', sans-serif;
+    border-left: solid #eee 1px;
+}
+
+.sensor-data .data-row {
+    margin-top: 5px;
+}
+
+.sensor-data .data-row .data-title {
+    font-size: 16px;
+}
+
+.sensor-data .data-row .data-value {
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.sensor-data .data-row .data-unit {
+    font-size: 14px;
+}
+
+/*******************************************************************
+** Section: Extreme Table Styles
+*******************************************************************/
+
+.extr-table {
+    margin-top: 5px;
+}
+
+.extr-table .high {
+    color: #D5202A;
+}
+
+.extr-table .low {
+    color: #0053AE;
+}
+
+/*******************************************************************
+** Section: Comfort Index
+*******************************************************************/
+
+h5.gauge-title {
+    text-align: center;
+}
+
+.panel-blue {
+    background-color: #28A1D6;
+    border-bottom: none;
+    color: #fff;
+    min-height: 60px;
+    border: none;
+}
+
+.panel-inverse {
+    background-color: #131e26;
+    color: #fff;
+    height: 40px;
+}
+
+/*******************************************************************
+** Section: Chartist Chart Styles
+*******************************************************************/
+
+select {
+    border: none;
+    font-size: 18px;
+    font-weight: bold;
+    box-shadow: none;
+    color: black;
+    margin: 20px 10px 0 0;
+}
+
+select:focus {
+    outline-color: #fff;
+}

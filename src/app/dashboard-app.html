@@ -1,21 +1,18 @@
 <!-- Navbar -->
-<header id="navbar-wrapper">
-    <div class="top-row row">
-        <div class="navbar-brand">
+<header id="navbar-wrapper"> 
+    <nav class="nav navbar-nav">
+        <a href="http://www.designreadycontrols.com" class="navbar-brand" target="_blank">
             Design Ready Controls
-        </div>  
-    </div>
-    
-    <div class="row">
-        <ul class="nav navbar-nav">
+        </a>
+        <ul class="nav navbar-nav"> 
             <li>
-                <a [routerLink]="['Home']" [class.active]="router.isRouteActive(router.generate(['/Home']))">Home</a>
+                <a [routerLink]="['Overview']" [class.active]="router.isRouteActive(router.generate(['/Overview']))">Overview</a>
             </li>
             <li>
                 <a [routerLink]="['FluxMap']" [class.active]="router.isRouteActive(router.generate(['/FluxMap']))">Flux Map</a>
             </li>
             <li>
-                <a [routerLink]="['Charts']" [class.active]="router.isRouteActive(router.generate(['/Charts']))">Current Conditions</a>
+                <a [routerLink]="['Charts']" [class.active]="router.isRouteActive(router.generate(['/Charts']))">Sensor Nodes</a>
             </li>
             <li>
                 <a [routerLink]="['Performance']" [class.active]="router.isRouteActive(router.generate(['/Performance']))">Performance</a>
@@ -24,13 +21,13 @@
                 <a [routerLink]="['Admin']" [class.active]="router.isRouteActive(router.generate(['/Admin']))">Admin</a>
             </li>
         </ul>
-    </div>
+    </nav>
 </header>
 <!--/ Navbar -->
 
 <div id="page-wrapper">
     <div class="content-wrapper">
-        <div class="container">
+        <div class="container-fluid">
             <!-- Routed views go here -->
             <router-outlet></router-outlet>
         </div>

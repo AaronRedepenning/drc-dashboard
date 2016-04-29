@@ -4,7 +4,7 @@
     <div class="col-md-6">
         <div class="panel">
             <div class="panel-title">
-                <h3>Current Facility Conditions</h3>
+                <h3>Current Building Conditions</h3>
             </div>
             <div class="panel-body">
                 
@@ -53,11 +53,22 @@
                         <!-- Data row 3 -->
                         <div class="row data-row">
                             <div class="col-md-5 data-title">
-                                CO2:
+                                Carbon Dioxide:
                             </div>
                             <div class="col-md-7">
-                                <span class="data-value"> -- -- . -- </span>
+                                <span class="data-value"> -- -- </span>
                                 <span class="data-unit"> ppm </span>
+                            </div>
+                        </div>
+                        
+                        <!-- Data row 4 -->
+                        <div class="row data-row">
+                            <div class="col-md-5 data-title">
+                                Light Intensity:
+                            </div>
+                            <div class="col-md-7">
+                                <span class="data-value"> -- -- </span>
+                                <span class="data-unit"> lux </span>
                             </div>
                         </div>
                         
@@ -74,10 +85,10 @@
     <div class="col-md-6">
         <div class="panel">
             <div class="panel-title">
-                <h3>Facility Conditions History</h3>
+                <h3>Today's Extremes</h3>
             </div>
             <div class="panel-body">
-                <table class="table table-bordered table-condensed table-responsive">
+                <table class="extr-table table table-bordered table-condensed table-responsive">
                     <tr>
                         <td></td>
                         <td style="font-weight: 700;">
@@ -90,30 +101,30 @@
                     </tr>
                     <tr>
                         <td style="font-weight: 700;">Temperature</td>
-                        <td>
+                        <td class="high">
                             120 °F
                         </td>
-                        <td>
+                        <td class="low">
                             22 °F
                         </td>
                         <td>72 °F</td>
                     </tr>
                     <tr>
                         <td style="font-weight: 700;">Humidity</td>
-                        <td>
+                        <td class="high">
                             100 %
                         </td>
-                        <td>
+                        <td class="low">
                             12 %
                         </td>
                         <td>50 %</td>
                     </tr>
                     <tr>
                         <td style="font-weight: 700;">Pressure</td>
-                        <td>
+                        <td class="high">
                             40000 ppm
                         </td>
-                        <td>
+                        <td class="low">
                             90 ppm
                         </td>
                         <td>1120 ppm</td>
@@ -126,6 +137,45 @@
 </div>
 
 <div class="row">
-    <d3-gauge [value]="tempValue" [size]="250"></d3-gauge>
-    <d3-gauge [value]="humValue" [size]="250"></d3-gauge>
+    
+    <div class="col-md-5">
+        <div class="row">
+            <div class="col-md-12">
+                <div class="panel">
+                    <div class="panel-title">
+                        <h3>Current Comfort Index</h3>
+                    </div>
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <h5 class="gauge-title">Temperature/Humidity Index</h5>
+                                <d3-gauge [value]="tempValue" [config]="gaugeConfig"></d3-gauge>
+                            </div>
+                            <div class="col-md-6">
+                                <h5 class="gauge-title">Ventilation Index</h5>
+                                <d3-gauge [value]="humValue" [config]="gaugeConfig"></d3-gauge>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="col-md-7">
+        <div class="panel">
+            <div class="panel-title">
+                <h3>Conditions History Graph</h3>
+                <span style="margin-left:10px; margin-right: 0;">for</span>
+                <select class="" [(ngModel)]="selectedItem">
+                    <option *ngFor="#item of itemsToSelect" [value]="item">
+                        {{item}}
+                    </option>
+                </select>
+            </div>
+            <div class="panel-body">
+                <chartist-linechart [data]="chartData" [chartClass]="'ct-major-twelfth'"></chartist-linechart>
+            </div>
+        </div>
+    </div>
 </div>

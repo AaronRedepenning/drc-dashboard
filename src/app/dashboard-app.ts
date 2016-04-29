@@ -3,7 +3,7 @@ import {Component} from 'angular2/core';
 import {Router, RouteConfig, ROUTER_DIRECTIVES} from 'angular2/router';
 
 // Import Custom TypeScript Modules
-import { Home } from './components/home/home';
+import { Overview } from './components/overview/overview';
 import { FluxMap } from './components/flux-map/flux-map';
 import { Admin } from './components/admin/admin';
 import { Performance } from './components/performance/performance';
@@ -21,11 +21,11 @@ import { Charts } from './components/charts/charts';
 
 // Angular JS Router and registered routes
 @RouteConfig([
-  { path: '/home',        component: Home,        name: 'Home', useAsDefault: true },
+  { path: '/overview',    component: Overview,    name: 'Overview', useAsDefault: true },
   { path: '/flux-map',    component: FluxMap,     name: 'FluxMap'},
   { path: '/admin',       component: Admin,       name: 'Admin'},
   { path: '/performance', component: Performance, name: 'Performance'},
-  { path: '/charts',     component:  Charts,      name: 'Charts'}
+  { path: '/charts',      component:  Charts,     name: 'Charts'}
 ])
 
 // DashboardApp Class
