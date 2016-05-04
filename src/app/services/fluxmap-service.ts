@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
  * FluxmapService
  */
 export class FluxmapService {
-    private _fluxmapDataUrl = 'http://localhost:3000/fluxmap-data';
+    private _fluxmapDataUrl = 'http://10.0.0.178:3000/fluxmap-data';
     
     constructor(private http: Http) { }
     
