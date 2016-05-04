@@ -1,5 +1,7 @@
 var webpack = require('webpack');
 var path = require('path');
+var CopyWebpackPlugin = require('copy-webpack-plugin');
+var CleanWebpackPlugin = require('clean-webpack-plugin');
 
 
 // Webpack Config
@@ -16,6 +18,14 @@ var webpackConfig = {
 
   plugins: [
     new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills'], minChunks: Infinity }),
+    new CopyWebpackPlugin([{from: 'src', ignore: [
+      '*.ts',
+      { glob: '**/heatmap.js/*', dot: true},
+    ]}]),
+    new CleanWebpackPlugin(['dist'], {
+      verbose: true, // Print to console
+      dry: true // delete everything
+    })
   ],
 
   module: {
@@ -32,7 +42,6 @@ var webpackConfig = {
         },
         // .ts files for TypeScript
         { test: /\.ts$/, loader: 'awesome-typescript-loader' },
-
     ]
   }
 
