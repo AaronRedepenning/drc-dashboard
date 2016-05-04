@@ -89,7 +89,6 @@ export class FluxMap {
     
     private setRandomData(height: number, width : number, heatmap : HeatmapOverlay) : void {
         var testData = this.getRandomData(height, width);
-        console.log(testData); // For debugging purposes
         heatmap.setData(testData);
     }
     
