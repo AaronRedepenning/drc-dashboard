@@ -3,13 +3,15 @@ import { Component } from 'angular2/core';
  
 // Import Custom Modules
 import * as L from 'leaflet';
+import { FluxmapService } from '../../services/fluxmap-service';
 // HeatmapJS doesn't need import??
 
 // FluxMap Class Decorator - used by AngularJS
 @Component({
     selector: 'flux-map',
     templateUrl: 'app/components/flux-map/flux-map.html',
-    styleUrls: [ 'app/components/flux-map/flux-map.css' ]
+    styleUrls: [ 'app/components/flux-map/flux-map.css' ],
+    providers: [ FluxmapService ]
 })
 
 /**
@@ -19,7 +21,7 @@ export class FluxMap {
     
     intervalID : any;
     
-    constructor() {}
+    constructor(private _fluxmapSerivce: FluxmapService) { }
     
     ngOnInit() {
         console.log("FluxMap.ngOnInit()");
@@ -117,6 +119,12 @@ export class FluxMap {
             max : max,
             min : min
         };
+        
+        this._fluxmapSerivce.getFluxmapData()
+            .subscribe(
+                data => console.log(data),
+                error => console.log(error)
+            );
         
         return randomData;
     }
