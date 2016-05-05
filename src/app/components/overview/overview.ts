@@ -145,6 +145,7 @@ export class Overview {
                 return element.name === item;
             }).data
         };
+        console.log(this.chartData);
     }
     
     ngOnDestroy() { clearInterval(this.intervalID); }

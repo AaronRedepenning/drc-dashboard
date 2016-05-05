@@ -37,7 +37,7 @@ export class ChartistLinechart {
         fullWidth: true,
         showArea: true,
         low: 0,
-        high: 25,
+        high: 100,
         plugins: [
             Chartist.plugins.ctAxisTitle({
                 axisX: {
