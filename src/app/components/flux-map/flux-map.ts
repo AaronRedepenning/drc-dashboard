@@ -72,7 +72,7 @@ export class FluxMap {
         
         // Setup interval to update the fluxmap every 5 seconds
         // with new data from the server
-        setInterval(this.getFluxmapData(), 5000);
+        this._intervalID = setInterval(this.getFluxmapData(), 5000);
     }
     
     ngOnDestroy() {
@@ -88,13 +88,14 @@ export class FluxMap {
             );
     }
     
-    private setNewData(data: any[]) : void {
-        let fluxmapData : HeatmapData = {
-            data: data[0].data,
-            min: data[0].min,
-            max: data[0].max
-        };
-        this._heatmapOverlay.setData(fluxmapData);
+    private setNewData(data: any) : void {
+        console.log(data);
+        // let fluxmapData : HeatmapData = {
+        //     data: data[0].data,
+        //     min: data[0].min,
+        //     max: data[0].max
+        // };
+        // this._heatmapOverlay.setData(fluxmapData);
     }
     
     public toggleFullscreen() {

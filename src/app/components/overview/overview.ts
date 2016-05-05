@@ -22,7 +22,7 @@ export class Overview {
     intervalID: any;
     
     // Set this to change data in chartData
-    chartData: Chartist.IChartistData;
+    chartData: Chartist.IChartistData = {labels:[], series:[[]]};
     private _chartData: any;
     currentConditions: any = {
         temperature: 0,
@@ -111,7 +111,7 @@ export class Overview {
     private getNewOverviewData() {
         this._overviewService.getOverviewData()
             .subscribe(
-                data => this.setOverviewData(data),
+                data => console.log(data),
                 error => console.log(error)
             );
     }
