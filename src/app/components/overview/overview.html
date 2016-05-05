@@ -11,7 +11,7 @@
                 <div class="row">
                     <div class="col-md-5">
                         <div class="cur-temp">
-                            <span class="cur-temp-val">73</span>
+                            <span class="cur-temp-val">{{currentConditions.temperature}}</span>
                             <span class="cur-temp-unit">°F</span>
                         </div>
                     </div>
@@ -23,7 +23,7 @@
                                 Humidity:
                             </div>
                             <div class="col-md-7">
-                                <span class="data-value">100</span>
+                                <span class="data-value">{{currentConditions.humidity}}</span>
                                 <span class="data-unit">% </span>
                             </div>
                         </div>
@@ -34,7 +34,7 @@
                                 Pressure:
                             </div>
                             <div class="col-md-7">
-                                <span class="data-value"> 1204.6 </span>
+                                <span class="data-value"> {{currentConditions.pressure}} </span>
                                 <span class="data-unit"> hPa </span>
                             </div>
                         </div>
@@ -45,7 +45,7 @@
                                 Dew Point:
                             </div>
                             <div class="col-md-7">
-                                <span class="data-value">47</span>
+                                <span class="data-value"> {{currentConditions.dewpoint}} </span>
                                 <span class="data-unit"> °F </span>
                             </div>
                         </div>
@@ -67,7 +67,7 @@
                                 Light Intensity:
                             </div>
                             <div class="col-md-7">
-                                <span class="data-value"> -- -- </span>
+                                <span class="data-value"> {{currentConditions.lightIntensity}} </span>
                                 <span class="data-unit"> lux </span>
                             </div>
                         </div>
@@ -102,32 +102,32 @@
                     <tr>
                         <td style="font-weight: 700;">Temperature</td>
                         <td class="high">
-                            120 °F
+                            {{extremes.maximums.temperature}} °F
                         </td>
                         <td class="low">
-                            22 °F
+                            {{extremes.minimums.temperature}} °F
                         </td>
-                        <td>72 °F</td>
+                        <td>{{extremes.averages.temperature}} °F</td>
                     </tr>
                     <tr>
                         <td style="font-weight: 700;">Humidity</td>
                         <td class="high">
-                            100 %
+                            {{extremes.maximums.humidity}} %
                         </td>
                         <td class="low">
-                            12 %
+                            {{extremes.minimums.humidity}} %
                         </td>
-                        <td>50 %</td>
+                        <td>{{extremes.avarages.humidity}} %</td>
                     </tr>
                     <tr>
                         <td style="font-weight: 700;">Pressure</td>
                         <td class="high">
-                            40000 ppm
+                            {{extremes.maximums.pressure}} ppm
                         </td>
                         <td class="low">
-                            90 ppm
+                            {{extremes.minimums.pressure}} ppm
                         </td>
-                        <td>1120 ppm</td>
+                        <td>{{extremes.averages.pressure}} ppm</td>
                     </tr>
                 </table>
             </div>
@@ -149,11 +149,11 @@
                         <div class="row">
                             <div class="col-md-6">
                                 <h5 class="gauge-title">Temperature/Humidity Index</h5>
-                                <d3-gauge [value]="tempValue" [config]="gaugeConfig"></d3-gauge>
+                                <d3-gauge [value]="gaugeData.tempHumGauge" [config]="gaugeConfig"></d3-gauge>
                             </div>
                             <div class="col-md-6">
                                 <h5 class="gauge-title">Ventilation Index</h5>
-                                <d3-gauge [value]="humValue" [config]="gaugeConfig"></d3-gauge>
+                                <d3-gauge [value]="gaugeData.lightGauge" [config]="gaugeConfig"></d3-gauge>
                             </div>
                         </div>
                     </div>
