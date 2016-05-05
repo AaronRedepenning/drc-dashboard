@@ -24,6 +24,14 @@ export class Overview {
     humValue: number = 5;
     intervalID: any;
     
+    currentConditions: any = {
+        temperature: 0,
+        humidity: 0,
+        pressure: 0,
+        dewPoint: 0,
+        lightIntensity: 0
+    };
+    
     itemsToSelect: string[] = [
         'Temperature',
         'Humidity',
@@ -78,7 +86,10 @@ export class Overview {
             this.humValue = Math.max(Math.min((Math.random() * 2 - 1) + this.humValue, 10), 0);
             this._overviewService.getOverviewData() 
                 .subscribe(
-                    data => console.log(data),
+                    data => {
+                        
+                        console.log(data)
+                    },
                     error => console.log(error)
                 );
         }, 10000);
@@ -104,7 +115,10 @@ export class Overview {
         return data;
     }
     
-    private gaugeArcColorFunction(d: number, i:number) {
-        
+    private setCurrentConditions(data: any) {
+        this.currentConditions.temperature = data.currentConditions.temperature;
+        this.currentConditions.humidity = data.currentConditions.humidity;
+        this.currentConditions.pressure = data.currentConditions.pressure;
+        this.currentConditions.dewPoint = data.currentConditions.dewpoint;
     }
 }
