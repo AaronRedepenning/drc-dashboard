@@ -30,7 +30,7 @@ export class FluxMap {
     private _zIndex: number = this.availableZIndexes[0];
     set zIndex(idx: number) {
         this.zIndex = idx;
-        this.setHeatmapDataForZIndex();
+        //this.setHeatmapDataForZIndex();
     }
     get zIndex(): number {
         return this._zIndex;
@@ -87,9 +87,10 @@ export class FluxMap {
                 data => {
                     this._heatmapDataArray = data;
                     heatmapOverlay.setData({data: []});
-                    heatmapOverlay.setData({data: this._heatmapDataArray[0]});
+                    heatmapOverlay.setData(this._heatmapDataArray[0]);
                     console.log(data);
-                }
+                },
+                error => console.log(error)
             )
         
         // Start 5 second interval to update Fluxmap with new data
@@ -99,9 +100,10 @@ export class FluxMap {
                     data => {
                         this._heatmapDataArray = data;
                         heatmapOverlay.setData({data: []});
-                        heatmapOverlay.setData({data: this._heatmapDataArray[0]});
+                        heatmapOverlay.setData(this._heatmapDataArray[0]);
                         console.log(data);
-                    }
+                    },
+                    error => console.log(error)
                 )
         }, 5000);
     }
