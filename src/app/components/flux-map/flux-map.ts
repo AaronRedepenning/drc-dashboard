@@ -26,15 +26,18 @@ export class FluxMap {
         {data: []},
         {data: []}
     ];
-    availableZIndexes: number[] = [1,2,3,4,5];
+    
+    availableZIndexes: number[] = [1, 2, 3, 4, 5];
     private _zIndex: number = this.availableZIndexes[0];
-    set zIndex(idx: number) {
-        this.zIndex = idx;
-        //this.setHeatmapDataForZIndex();
+    set zIndex(item: number) {
+        this._zIndex = item;
+        this.setHeatmapDataForZIndex();
     }
     get zIndex(): number {
         return this._zIndex;
     }
+    
+    private _heatmapOverlay: HeatmapOverlay;
     
     constructor(private _fluxmapService: FluxmapService) {}
     
@@ -68,13 +71,13 @@ export class FluxMap {
             blur: 1
         };
         
-        var heatmapOverlay = new HeatmapOverlay(config);
+        this._heatmapOverlay = new HeatmapOverlay(config);
                 
         // 3) Show fluxmap in div with id="fluxmap"
         var fluxmap = L.map('fluxmap', {
             crs: L.CRS.Simple,
             minZoom: -1,
-            layers: [floorPlanLayer, heatmapOverlay],
+            layers: [floorPlanLayer, this._heatmapOverlay],
             maxBounds: bounds,
             dragging: true,
             scrollWheelZoom: true
@@ -86,8 +89,7 @@ export class FluxMap {
             .subscribe(
                 data => {
                     this._heatmapDataArray = data;
-                    heatmapOverlay.setData({data: []});
-                    heatmapOverlay.setData(this._heatmapDataArray[0]);
+                    this.setHeatmapDataForZIndex();
                     console.log(data);
                 },
                 error => console.log(error)
@@ -99,8 +101,7 @@ export class FluxMap {
                 .subscribe(
                     data => {
                         this._heatmapDataArray = data;
-                        heatmapOverlay.setData({data: []});
-                        heatmapOverlay.setData(this._heatmapDataArray[0]);
+                        this.setHeatmapDataForZIndex();
                         console.log(data);
                     },
                     error => console.log(error)
@@ -109,7 +110,9 @@ export class FluxMap {
     }
     
     private setHeatmapDataForZIndex() {
-        console.log(this._zIndex);
+        console.log("Setting new heatmap data at index: " + this._zIndex);
+        this._heatmapOverlay.setData({data: []});
+        this._heatmapOverlay.setData(this._heatmapDataArray[this._zIndex - 1]);
     }
     
     public toggleFullscreen() {
