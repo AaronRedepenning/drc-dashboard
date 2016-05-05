@@ -88,8 +88,13 @@ export class FluxMap {
             );
     }
     
-    private setNewData(data: HeatmapData[]) : void {
-        this._heatmapOverlay.setData(data[this._zHeight]);
+    private setNewData(data: any[]) : void {
+        let fluxmapData : HeatmapData = {
+            data: data[0].data,
+            min: data[0].min,
+            max: data[0].max
+        };
+        this._heatmapOverlay.setData(fluxmapData);
     }
     
     public toggleFullscreen() {

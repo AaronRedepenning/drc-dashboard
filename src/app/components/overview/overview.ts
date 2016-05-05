@@ -117,11 +117,11 @@ export class Overview {
     }
     
     private setOverviewData(data: any) {
-        this.currentConditions = data.currentConditions;
-        this.gaugeData = data.gaugeData;
-        this.extremes = data.extremes;
-        this._chartData = data.chartData;
-        this.setChartDataForSelected(this.selectedItem);
+        // this.currentConditions = data.currentConditions;
+        // this.gaugeData = data.gaugeData;
+        // this.extremes = data.extremes;
+        // this._chartData = data.chartData;
+        // this.setChartDataForSelected(this.selectedItem);
         
         
     }
