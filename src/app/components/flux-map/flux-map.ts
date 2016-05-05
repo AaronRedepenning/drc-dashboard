@@ -19,8 +19,13 @@ import { FluxmapService } from '../../services/fluxmap-service';
 export class FluxMap {
     
     intervalID : any;
-    private _heatmapOverlay: HeatmapOverlay;
-    private _heatmapDataArray: any;
+    private _heatmapDataArray: any = [
+        {data: []},
+        {data: []},
+        {data: []},
+        {data: []},
+        {data: []}
+    ];
     availableZIndexes: number[] = [1,2,3,4,5];
     private _zIndex: number = this.availableZIndexes[0];
     set zIndex(idx: number) {
@@ -63,13 +68,13 @@ export class FluxMap {
             blur: 1
         };
         
-        this._heatmapOverlay = new HeatmapOverlay(config);
+        var heatmapOverlay = new HeatmapOverlay(config);
                 
         // 3) Show fluxmap in div with id="fluxmap"
         var fluxmap = L.map('fluxmap', {
             crs: L.CRS.Simple,
             minZoom: -1,
-            layers: [floorPlanLayer, this._heatmapOverlay],
+            layers: [floorPlanLayer, heatmapOverlay],
             maxBounds: bounds,
             dragging: true,
             scrollWheelZoom: true
@@ -77,27 +82,32 @@ export class FluxMap {
         fluxmap.fitBounds(bounds);
                 
         // Generate heatmap data from the server
-        this.getNewHeatmapData();
-        
-        // Start 5 second interval to update Fluxmap with new data
-        this.intervalID = setInterval(this.getNewHeatmapData(), 5000);
-    }
-    
-    private getNewHeatmapData() {
-        this._fluxmapService.getFluxmapData()
+        this._fluxmapService.getFluxmapData() 
             .subscribe(
                 data => {
                     this._heatmapDataArray = data;
-                    this.setHeatmapDataForZIndex();
-                },
-                error => console.log(error)
-            );
+                    heatmapOverlay.setData({data: []});
+                    heatmapOverlay.setData({data: this._heatmapDataArray[0]});
+                    console.log(data);
+                }
+            )
+        
+        // Start 5 second interval to update Fluxmap with new data
+        this.intervalID = setInterval(()=> {
+            this._fluxmapService.getFluxmapData()
+                .subscribe(
+                    data => {
+                        this._heatmapDataArray = data;
+                        heatmapOverlay.setData({data: []});
+                        heatmapOverlay.setData({data: this._heatmapDataArray[0]});
+                        console.log(data);
+                    }
+                )
+        }, 5000);
     }
     
     private setHeatmapDataForZIndex() {
-        this._heatmapOverlay.setData({data:[]}); // Clear the heatmap
-        //this._heatmapOverlay.setData(this._heatmapDataArray[this.zIndex - 1]);
-        console.log(this._heatmapDataArray[this.zIndex - 1]);
+        console.log(this._zIndex);
     }
     
     public toggleFullscreen() {
