@@ -5,6 +5,12 @@ import { Component } from 'angular2/core';
 import { D3Gauge } from '../d3-gauge/d3-gauge';
 import { ChartistLinechart } from '../chartist-linechart/chartist-linechart';
 import { OverviewService } from '../../services/overview-service';
+import { 
+    temperatureChartOptions, 
+    pressureChartOptions,
+    humidityChartOptions,
+    lightChartOptions
+} from './overview-chart-options';
 
 @Component({
     templateUrl: 'app/components/overview/overview.html',
@@ -19,9 +25,6 @@ import { OverviewService } from '../../services/overview-service';
  */
 export class Overview {
     
-    /* Remove once has server */
-    tempValue: number = 5;
-    humValue: number = 5;
     intervalID: any;
     
     currentConditions: any = {
@@ -61,7 +64,14 @@ export class Overview {
     };
     
     chartData: Chartist.IChartistData;
+    chartOptions: Chartist.ILineChartOptions;
     private _chartDataArray: any;
+    private _chartOptionsArray: Chartist.ILineChartOptions[] = [
+        temperatureChartOptions,
+        humidityChartOptions,
+        pressureChartOptions,
+        lightChartOptions
+    ];
     
     itemsToSelect: string[] = [
         'Temperature',
@@ -76,6 +86,9 @@ export class Overview {
     }
     get selectedItem(): string {
         return this._selectedItem;
+    }
+    get selectedItemIndex(): number {
+        return this.itemsToSelect.indexOf(this.selectedItem);
     }
     
     /* Keep? */
@@ -139,6 +152,7 @@ export class Overview {
     }
     
     private setDataInChartForSelected(item: string) {
+        this.chartOptions = this._chartOptionsArray[this.selectedItemIndex];
         this.chartData = {
             labels: this._chartDataArray.labels,
             series: this._chartDataArray.series.find(function (element) {
