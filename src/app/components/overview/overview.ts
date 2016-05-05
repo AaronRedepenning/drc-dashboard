@@ -10,8 +10,8 @@ import { OverviewService } from '../../services/overview-service';
     templateUrl: 'app/components/overview/overview.html',
     styleUrls: [ 'app/components/overview/overview.css' ],
     selector: 'overview',
-    directives: [ D3Gauge, ChartistLinechart ],
-    providers: [ OverviewService ]
+    directives: [D3Gauge, ChartistLinechart],
+    providers: [OverviewService]
 })
 
 /**
@@ -19,60 +19,29 @@ import { OverviewService } from '../../services/overview-service';
  */
 export class Overview {
     
+    /* Remove once has server */
+    tempValue: number = 5;
+    humValue: number = 5;
     intervalID: any;
     
-    // Set this to change data in chartData
-    chartData: Chartist.IChartistData = {labels:[], series:[[]]};
-    private _chartData: any;
-    currentConditions: any = {
-        temperature: 0,
-        pressure : 0,
-        humidity : 0,
-        dewpoint : 0,
-        lightIntensity: 0
-    };
-    
-    extremes: any = { 
-        maximums: {
-            temperature: 0,
-            humidity: 0,
-            pressure: 0,
-            lightIntensity: 0
-        },
-        averages: {
-            temperature: 0,
-            humidity: 0,
-            pressure: 0,
-            lightIntensity: 0
-        },
-        minimums: {
-            temperature: 0,
-            humidity: 0,
-            pressure: 0,
-            lightIntensity: 0
-        }
-    };
-    
-    gaugeData: any = { 
-        tempHumGauge: 0,
-        lightGauge: 0
-    };
-    
-    itemsToSelect = [
-        "Temperature",
-        "Humidity",
-        "Pressure",
-        "Light Intensity"
-    ]
+    itemsToSelect: string[] = [
+        'Temperature',
+        'Humidity',
+        'Pressure',
+        'Carbon Dioxide',
+        'Comfort Index'
+    ];
     private _selectedItem: string = this.itemsToSelect[0];
     set selectedItem(item: string) {
         this._selectedItem = item;
-        this.setChartDataForSelected(item);
+        this.chartData = this.generateRandomChartData(30);
     }
     get selectedItem(): string {
         return this._selectedItem;
     }
     
+    /* Keep? */
+    chartData: Chartist.IChartistData;
     gaugeConfig: any = {
         // SVG Config
         size: 200,
@@ -99,39 +68,43 @@ export class Overview {
     constructor(private _overviewService: OverviewService) { }
     
     ngOnInit() { 
-        this.getNewOverviewData();
-        // Set interval to refresh data every 5 seconds
-        this.intervalID = setInterval(this.getNewOverviewData(), 5000);
+        this.start(); 
+        this.chartData = this.generateRandomChartData(30);
     }
     
-    ngOnDestroy() { 
+    start() {
+        this.intervalID = setInterval(()=> {
+            this.tempValue = Math.max(Math.min((Math.random() * 2 - 1) + this.tempValue, 10), 0);
+            this.humValue = Math.max(Math.min((Math.random() * 2 - 1) + this.humValue, 10), 0);
+            this._overviewService.getOverviewData() 
+                .subscribe(
+                    data => console.log(data),
+                    error => console.log(error)
+                );
+        }, 10000);
+    }
+    
+    stop() { clearInterval(this.intervalID); }
+    ngOnDestroy() { this.stop(); }
+    
+    private generateRandomChartData(length: number): Chartist.IChartistData {
+        var labelsData: number[]   = [];
+        var seriesData: number[][] = [[]];        
         
-    }
-    
-    private getNewOverviewData() {
-        // this._overviewService.getOverviewData()
-        //     .subscribe(
-        //         data => console.log(data),
-        //         error => console.log(error)
-        //     );
-    }
-    
-    private setOverviewData(data: any) {
-        // this.currentConditions = data.currentConditions;
-        // this.gaugeData = data.gaugeData;
-        // this.extremes = data.extremes;
-        // this._chartData = data.chartData;
-        // this.setChartDataForSelected(this.selectedItem);
+        for(var CurrentTime = 0; CurrentTime < length; CurrentTime++) {
+            labelsData.push(Date.now());
+            seriesData[0].push(Math.floor(Math.random() * 20));
+        }
         
+        var data = {
+            labels: labelsData,
+            series: seriesData
+        }
         
+        return data;
     }
     
-    private setChartDataForSelected(item: string) {
-        this.chartData = {
-            labels: this._chartData.labels,
-            series: this._chartData.series.find((item) => {
-                return item.name === this.selectedItem;
-            })
-        };
+    private gaugeArcColorFunction(d: number, i:number) {
+        
     }
 }

@@ -88,7 +88,8 @@ var defaultConfig = {
 
   devServer: {
     historyApiFallback: true,
-    watchOptions: { aggregateTimeout: 300, poll: 1000 }
+    watchOptions: { aggregateTimeout: 300, poll: 1000 },
+    outputPath: './dist'
   },
 
   node: {

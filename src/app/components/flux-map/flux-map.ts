@@ -3,15 +3,13 @@ import { Component } from 'angular2/core';
  
 // Import Custom Modules
 import * as L from 'leaflet';
-import { FluxmapService } from '../../services/fluxmap-service';
 // HeatmapJS doesn't need import??
 
 // FluxMap Class Decorator - used by AngularJS
 @Component({
     selector: 'flux-map',
     templateUrl: 'app/components/flux-map/flux-map.html',
-    styleUrls: [ 'app/components/flux-map/flux-map.css' ],
-    providers: [ FluxmapService ]
+    styleUrls: [ 'app/components/flux-map/flux-map.css' ]
 })
 
 /**
@@ -19,17 +17,19 @@ import { FluxmapService } from '../../services/fluxmap-service';
  */
 export class FluxMap {
     
-    private _intervalID : any;
-    private _heatmapOverlay: HeatmapOverlay;
-    private _zHeight: number;
+    intervalID : any;
     
-    constructor(private _fluxmapSerivce: FluxmapService) { }
+    constructor() {}
     
     ngOnInit() {
+        console.log("FluxMap.ngOnInit()");
         
         let height : number = 275;
         let width  : number = 550;
         let bounds : L.LatLngBounds = L.latLngBounds(new L.LatLng(0, 0), new L.LatLng(height, width));
+        
+        // Check that typescript is working so far
+        console.log(bounds);
         
         // 1) Build first layer of fluxmap - DRCs floor plan
         let floorPlanLayer : L.ImageOverlay = L.imageOverlay('app/components/flux-map/FloorPlan.png', bounds);
@@ -56,6 +56,9 @@ export class FluxMap {
         
         var heatmapLayer = new HeatmapOverlay(config);
         
+        // Make sure HeatmapJS typescript is loaded correctly
+        console.log(heatmapLayer);
+        
         // 3) Show fluxmap in div with id="fluxmap"
         var fluxmap = L.map('fluxmap', {
             crs: L.CRS.Simple,
@@ -67,35 +70,57 @@ export class FluxMap {
         });
         fluxmap.fitBounds(bounds);
                 
-        // Get fluxmap data from the server
-        this.getFluxmapData();
+        // Generate some random data for fluxmap
+        this.setRandomData(height, width, heatmapLayer);
         
-        // Setup interval to update the fluxmap every 5 seconds
-        // with new data from the server
-        this._intervalID = setInterval(this.getFluxmapData(), 5000);
+        // Start 5 second interval to update Fluxmap with new data
+        this.intervalID = setInterval(() => {
+            heatmapLayer.setData({data:[]});
+            this.setRandomData(height, width, heatmapLayer);
+        }, 5000);
     }
     
     ngOnDestroy() {
-        clearInterval(this._intervalID);
+        clearInterval(this.intervalID);
         console.log("ngOnDestroy()"); // For debugging purposes
     }
     
-    private getFluxmapData() {
-        // this._fluxmapSerivce.getFluxmapData()
-        //     .subscribe(
-        //         data => this.setNewData(data),
-        //         error => console.log(error)
-        //     );
+    private setRandomData(height: number, width : number, heatmap : HeatmapOverlay) : void {
+        var testData = this.getRandomData(height, width);
+        console.log(testData); // For debugging purposes
+        heatmap.setData(testData);
     }
     
-    private setNewData(data: any) : void {
-        // console.log(data);
-        // let fluxmapData : HeatmapData = {
-        //     data: data[0].data,
-        //     min: data[0].min,
-        //     max: data[0].max
-        // };
-        // this._heatmapOverlay.setData(fluxmapData);
+    private getRandomData(height : number, width : number) : HeatmapData {
+        var rows = 10;
+        var colums = 5;
+        var length = 50; // Asuming 50 sensor nodes in the facility
+        var max = 100;     // Ranging from 0 - 80 deg F
+        var min = 0;
+        var points : HeatmapDataPoint[] = [];
+        
+        for(var i = (height / colums) / 2; i < height; i += (height / colums)) {
+            for(var j = (width / rows) / 2; j < width; j += (width / rows)) {
+                var value = 60 + 40 * (Math.random() - 0.5);
+                
+                let point : HeatmapDataPoint = {
+                    y: i,
+                    x: j,
+                    val: value
+                };
+                points.push(point);
+            }
+        }
+        
+        let randomData : HeatmapData = {
+            data : points,
+            max : max,
+            min : min
+        };
+        
+        return randomData;
+        
+        
     }
     
     public toggleFullscreen() {
