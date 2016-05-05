@@ -109,11 +109,11 @@ export class Overview {
     }
     
     private getNewOverviewData() {
-        this._overviewService.getOverviewData()
-            .subscribe(
-                data => console.log(data),
-                error => console.log(error)
-            );
+        // this._overviewService.getOverviewData()
+        //     .subscribe(
+        //         data => console.log(data),
+        //         error => console.log(error)
+        //     );
     }
     
     private setOverviewData(data: any) {

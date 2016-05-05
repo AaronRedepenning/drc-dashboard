@@ -81,15 +81,15 @@ export class FluxMap {
     }
     
     private getFluxmapData() {
-        this._fluxmapSerivce.getFluxmapData()
-            .subscribe(
-                data => this.setNewData(data),
-                error => console.log(error)
-            );
+        // this._fluxmapSerivce.getFluxmapData()
+        //     .subscribe(
+        //         data => this.setNewData(data),
+        //         error => console.log(error)
+        //     );
     }
     
     private setNewData(data: any) : void {
-        console.log(data);
+        // console.log(data);
         // let fluxmapData : HeatmapData = {
         //     data: data[0].data,
         //     min: data[0].min,
