@@ -113,7 +113,8 @@ export class Overview {
         
         pointerHeadLengthPercent: 0.85,
         majorTicks: 3,
-        maxValue: 10
+        maxValue: 10,
+        transitionMs: 2000
     };
     
     constructor(private _overviewService: OverviewService) { }

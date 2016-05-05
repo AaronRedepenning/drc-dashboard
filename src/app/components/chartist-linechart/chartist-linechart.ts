@@ -25,8 +25,7 @@ export class ChartistLinechart {
     private _userChartOptions: Chartist.ILineChartOptions = { };
     @Input('options') set userChartOptions(options: Chartist.ILineChartOptions) {
         this._userChartOptions = options;
-        if (this._isRendered)
-            this.update();
+        this.mergeChartOptions();
     }
     
     // Default Chartist Linechart Options
