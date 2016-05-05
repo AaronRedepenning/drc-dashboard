@@ -28,28 +28,58 @@ export class Overview {
         temperature: 0,
         humidity: 0,
         pressure: 0,
-        dewPoint: 0,
+        dewpoint: 0,
         lightIntensity: 0
     };
+    
+    extremeConditions: any = {
+        temperature: {
+            min: 0,
+            max: 0,
+            average: 0
+        },
+        humidity: {
+            min: 0,
+            max: 0,
+            average: 0
+        },
+        pressure: {
+            min: 0,
+            max: 0,
+            average: 0
+        },
+        lightIntensity: {
+            min: 0,
+            max: 0,
+            average: 0
+        }
+    };
+    
+    gaugeData: any = {
+        tempHumGauge: 0,
+        lightGauge: 0
+    };
+    
+    chartData: Chartist.IChartistData;
+    private _chartDataArray: any;
     
     itemsToSelect: string[] = [
         'Temperature',
         'Humidity',
         'Pressure',
-        'Carbon Dioxide',
-        'Comfort Index'
+        'Light Intensity'
     ];
     private _selectedItem: string = this.itemsToSelect[0];
     set selectedItem(item: string) {
         this._selectedItem = item;
-        this.chartData = this.generateRandomChartData(30);
+        this.setDataInChartForSelected(item);
     }
     get selectedItem(): string {
         return this._selectedItem;
     }
     
     /* Keep? */
-    chartData: Chartist.IChartistData;
+    
     gaugeConfig: any = {
         // SVG Config
         size: 200,
@@ -76,18 +106,23 @@ export class Overview {
     constructor(private _overviewService: OverviewService) { }
     
     ngOnInit() { 
+        this._overviewService.getOverviewData() 
+                .subscribe(
+                    data => {
+                        this.setDataInView(data);
+                        console.log(data)
+                    },
+                    error => console.log(error)
+                );
         this.start(); 
-        this.chartData = this.generateRandomChartData(30);
     }
     
     start() {
         this.intervalID = setInterval(()=> {
-            this.tempValue = Math.max(Math.min((Math.random() * 2 - 1) + this.tempValue, 10), 0);
-            this.humValue = Math.max(Math.min((Math.random() * 2 - 1) + this.humValue, 10), 0);
             this._overviewService.getOverviewData() 
                 .subscribe(
                     data => {
-                        this.setCurrentConditions(data);
+                        this.setDataInView(data);
                         console.log(data)
                     },
                     error => console.log(error)
@@ -95,30 +130,22 @@ export class Overview {
         }, 10000);
     }
     
-    stop() { clearInterval(this.intervalID); }
-    ngOnDestroy() { this.stop(); }
-    
-    private generateRandomChartData(length: number): Chartist.IChartistData {
-        var labelsData: number[]   = [];
-        var seriesData: number[][] = [[]];        
-        
-        for(var CurrentTime = 0; CurrentTime < length; CurrentTime++) {
-            labelsData.push(Date.now());
-            seriesData[0].push(Math.floor(Math.random() * 20));
-        }
-        
-        var data = {
-            labels: labelsData,
-            series: seriesData
-        }
-        
-        return data;
+    private setDataInView(data: any) {
+        this.currentConditions = data.currentConditions;
+        this.gaugeData = data.gaugeData;
+        this.extremeConditions = data.extremes;
+        this._chartDataArray = data.chartData;
+        this.setDataInChartForSelected(this.selectedItem);
     }
     
-    private setCurrentConditions(data: any) {
-        this.currentConditions.temperature = data.currentConditions.temperature;
-        this.currentConditions.humidity = data.currentConditions.humidity;
-        this.currentConditions.pressure = data.currentConditions.pressure;
-        this.currentConditions.dewPoint = data.currentConditions.dewpoint;
+    private setDataInChartForSelected(item: string) {
+        this.chartData = {
+            labels: this._chartDataArray.labels,
+            series: this._chartDataArray.series.find(function (element) {
+                return element.name === item;
+            }).data
+        };
     }
+    
+    ngOnDestroy() { clearInterval(this.intervalID); }
 }
