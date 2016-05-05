@@ -158,12 +158,12 @@
                     <div class="panel-body">
                         <div class="row">
                             <div class="col-md-6">
-                                <h5 class="gauge-title">Temperature/Humidity Index</h5>
+                                <h5 class="gauge-title">Temperature/Humidity Comfort Index</h5>
                                 <d3-gauge [value]="gaugeData.tempHumGauge" [config]="gaugeConfig"></d3-gauge>
                             </div>
                             <div class="col-md-6">
-                                <h5 class="gauge-title">Light Intensity Index</h5>
-                                <d3-gauge [value]="3" [config]="gaugeData.lightGauge"></d3-gauge>
+                                <h5 class="gauge-title">Light Intensity Comfort Index</h5>
+                                <d3-gauge [value]="gaugeData.lightGauge" [config]="gaugeConfig"></d3-gauge>
                             </div>
                         </div>
                     </div>
