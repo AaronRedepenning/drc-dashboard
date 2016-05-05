@@ -21,8 +21,8 @@ export class FluxMap {
     intervalID : any;
     private _heatmapOverlay: HeatmapOverlay;
     private _heatmapDataArray: any;
-    zIndex: number = this._availableZIndexes[0];
     private _availableZIndexes: number[] = [1,2,3,4,5];
+    zIndex: number = this._availableZIndexes[0];
     set availableZIndexes(idx: number) {
         this.zIndex = idx;
         this.setHeatmapDataForZIndex();
