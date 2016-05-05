@@ -21,11 +21,14 @@ export class FluxMap {
     intervalID : any;
     private _heatmapOverlay: HeatmapOverlay;
     private _heatmapDataArray: any;
-    private _availableZIndexes: number[] = [1,2,3,4,5];
-    zIndex: number = this._availableZIndexes[0];
-    set availableZIndexes(idx: number) {
+    availableZIndexes: number[] = [1,2,3,4,5];
+    private _zIndex: number = this.availableZIndexes[0];
+    set zIndex(idx: number) {
         this.zIndex = idx;
         this.setHeatmapDataForZIndex();
+    }
+    get zIndex(): number {
+        return this._zIndex;
     }
     
     constructor(private _fluxmapService: FluxmapService) {}
@@ -85,7 +88,7 @@ export class FluxMap {
             .subscribe(
                 data => {
                     this._heatmapDataArray = data;
-                    this.setHeatmapDataForZIndex()
+                    this.setHeatmapDataForZIndex();
                 },
                 error => console.log(error)
             );
@@ -93,7 +96,8 @@ export class FluxMap {
     
     private setHeatmapDataForZIndex() {
         this._heatmapOverlay.setData({data:[]}); // Clear the heatmap
-        this._heatmapOverlay.setData(this._heatmapDataArray[this.zIndex - 1]);
+        //this._heatmapOverlay.setData(this._heatmapDataArray[this.zIndex - 1]);
+        console.log(this._heatmapDataArray[this.zIndex - 1]);
     }
     
     public toggleFullscreen() {
