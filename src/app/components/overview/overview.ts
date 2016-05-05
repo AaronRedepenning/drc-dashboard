@@ -87,7 +87,7 @@ export class Overview {
             this._overviewService.getOverviewData() 
                 .subscribe(
                     data => {
-                        
+                        this.setCurrentConditions(data);
                         console.log(data)
                     },
                     error => console.log(error)
