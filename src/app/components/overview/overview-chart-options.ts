@@ -15,6 +15,15 @@ export const temperatureChartOptions: Chartist.ILineChartOptions = {
                         y: 20
                     },
                     textAnchor: 'middle'
+                },
+                axisY: {
+                    axisTitle: '',
+                    axisClass: 'ct-axis-title',
+                    offset: {
+                        x: -35,
+                        y: 0
+                    },
+                    flipTitle: false
                 }
             })
         ]
@@ -37,6 +46,15 @@ export const temperatureChartOptions: Chartist.ILineChartOptions = {
                         y: 20
                     },
                     textAnchor: 'middle'
+                },
+                axisY: {
+                    axisTitle: '',
+                    axisClass: 'ct-axis-title',
+                    offset: {
+                        x: -35,
+                        y: 0
+                    },
+                    flipTitle: false
                 }
             })
         ]
@@ -59,6 +77,15 @@ export const temperatureChartOptions: Chartist.ILineChartOptions = {
                         y: 20
                     },
                     textAnchor: 'middle'
+                },
+                axisY: {
+                    axisTitle: '',
+                    axisClass: 'ct-axis-title',
+                    offset: {
+                        x: -35,
+                        y: 0
+                    },
+                    flipTitle: false
                 }
             })
         ]
@@ -81,6 +108,15 @@ export const temperatureChartOptions: Chartist.ILineChartOptions = {
                         y: 20
                     },
                     textAnchor: 'middle'
+                },
+                axisY: {
+                    axisTitle: '',
+                    axisClass: 'ct-axis-title',
+                    offset: {
+                        x: -35,
+                        y: 0
+                    },
+                    flipTitle: false
                 }
             })
         ]
