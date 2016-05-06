@@ -71,7 +71,9 @@ export class Overview {
         lightChartOptions
     ];
     chartOptions: Chartist.ILineChartOptions = this._chartOptionsArray[0];
-    private _chartDataArray: any;
+    private _chartDataArray: any = {
+        labels: [], series:[]
+    }
     
     itemsToSelect: string[] = [
         'Temperature (°F)',
