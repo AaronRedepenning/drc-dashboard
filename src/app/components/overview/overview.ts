@@ -64,14 +64,14 @@ export class Overview {
     };
     
     chartData: Chartist.IChartistData;
-    chartOptions: Chartist.ILineChartOptions;
-    private _chartDataArray: any;
     private _chartOptionsArray: Chartist.ILineChartOptions[] = [
         temperatureChartOptions,
         humidityChartOptions,
         pressureChartOptions,
         lightChartOptions
     ];
+    chartOptions: Chartist.ILineChartOptions = this._chartOptionsArray[0];
+    private _chartDataArray: any;
     
     itemsToSelect: string[] = [
         'Temperature',

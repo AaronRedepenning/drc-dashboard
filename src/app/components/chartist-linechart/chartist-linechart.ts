@@ -26,6 +26,8 @@ export class ChartistLinechart {
     @Input('options') set userChartOptions(options: Chartist.ILineChartOptions) {
         this._userChartOptions = options;
         this.mergeChartOptions();
+        if(this._isRendered)
+            this.update();
     }
     
     // Default Chartist Linechart Options
@@ -93,10 +95,12 @@ export class ChartistLinechart {
     }
     
     private update() {
+        this.mergeChartOptions();
         this._chart.update(this._chartData, this._chartOptions);
     }
     
     private mergeChartOptions() {
+        console.log("Merging chart options");
         for(var attributeName in this._userChartOptions) {
             this._chartOptions[attributeName] = this._userChartOptions[attributeName];
         }
