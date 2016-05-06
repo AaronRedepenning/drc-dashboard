@@ -7,7 +7,7 @@ import { Observable } from 'rxjs/Observable';
  * OverviewService
  */
 export class OverviewService {
-    private _overviewDataUrl = 'http://10.0.0.178:3000/overview-data';
+    private _overviewDataUrl = './overview-data';
     
     constructor(private http: Http) { }
     
