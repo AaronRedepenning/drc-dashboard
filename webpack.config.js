@@ -20,7 +20,6 @@ var webpackConfig = {
     new webpack.optimize.CommonsChunkPlugin({ name: ['app', 'vendor', 'polyfills'], minChunks: Infinity }),
     new CopyWebpackPlugin([{from: 'src', ignore: [
       '*.ts',
-      { glob: '**/heatmap.js/*', dot: true},
     ]}]),
     new CleanWebpackPlugin(['dist'], {
       verbose: true, // Print to console
