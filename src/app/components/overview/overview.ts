@@ -76,11 +76,18 @@ export class Overview {
     }
     
     itemsToSelect: string[] = [
-        'Temperature (°F)',
-        'Humidity (%RH)',
-        'Pressure (hPa)',
-        'Light Intensity (lux)'
+        'Temperature',
+        'Humidity',
+        'Pressure',
+        'Light Intensity'
     ];
+    // chartUnits: string[] = [
+    //   ' (F)',
+    //   ' (%RH)',
+    //   ' (hPa)',
+    //   ' (lux)'
+    // ];
+    // selectedUnit: string = chartUnits[0];
     private _selectedItem: string = this.itemsToSelect[0];
     set selectedItem(item: string) {
         this._selectedItem = item;
