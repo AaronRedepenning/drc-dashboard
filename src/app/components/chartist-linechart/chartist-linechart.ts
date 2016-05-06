@@ -25,9 +25,6 @@ export class ChartistLinechart {
     private _userChartOptions: Chartist.ILineChartOptions = { };
     @Input('options') set userChartOptions(options: Chartist.ILineChartOptions) {
         this._userChartOptions = options;
-        this.mergeChartOptions();
-        if(this._isRendered)
-            this.update();
     }
     
     // Default Chartist Linechart Options
@@ -38,26 +35,7 @@ export class ChartistLinechart {
         fullWidth: true,
         showArea: true,
         plugins: [
-            Chartist.plugins.ctAxisTitle({
-                axisX: {
-                    axisTitle: 'Time (sec)',
-                    axisClass: 'ct-axis-title',
-                    offset: {
-                        x: 0,
-                        y: 20
-                    },
-                    textAnchor: 'middle'
-                },
-                axisY: {
-                    axisTitle: 'Temperature',
-                    axisClass: 'ct-axis-title',
-                    offset: {
-                        x: -35,
-                        y: 0
-                    },
-                    flipTitle: false
-                }
-            })
+            
         ]
     };
     
