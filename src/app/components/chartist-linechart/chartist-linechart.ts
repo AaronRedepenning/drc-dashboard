@@ -96,7 +96,7 @@ export class ChartistLinechart {
     
     private update() {
         this.mergeChartOptions();
-        this._chart.update(this._chartData, this._chartOptions);
+        this._chart.update(this._chartData, this._chartOptions, true);
     }
     
     private mergeChartOptions() {

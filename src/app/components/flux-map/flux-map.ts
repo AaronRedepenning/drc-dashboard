@@ -83,6 +83,7 @@ export class FluxMap {
             scrollWheelZoom: true
         });
         fluxmap.fitBounds(bounds);
+        var marker = L.marker([(275 / 5) * 2, (550 / 10) * 5]).addTo(fluxmap);
                 
         // Generate heatmap data from the server
         this._fluxmapService.getFluxmapData() 

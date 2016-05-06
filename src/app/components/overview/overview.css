@@ -9,7 +9,7 @@
 **               Section: Temperature Value Styles
 *===================================================================*/
 .cur-temp {
-    padding: 5% 5% 5% 20%;
+    padding: 5%;
     color: #71bc3c;
     font-weight: 700;
 }
