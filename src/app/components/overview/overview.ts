@@ -153,7 +153,6 @@ export class Overview {
     }
     
     private setDataInChartForSelected(item: string) {
-        this.chartOptions = this._chartOptionsArray[this.selectedItemIndex];
         this.chartData = {
             labels: this._chartDataArray.labels,
             series: this._chartDataArray.series.find(function (element) {
