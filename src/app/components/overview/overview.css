@@ -15,11 +15,11 @@
 }
 
 .cur-temp .cur-temp-val {
-    font-size: 72px;
+    font-size: 66px;
 }
 
 .cur-temp .cur-temp-unit {
-    font-size: 48px;
+    font-size: 36px;
     vertical-align: super;
     line-height: 75px;
     padding-left: 10px;

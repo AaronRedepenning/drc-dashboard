@@ -74,10 +74,10 @@ export class Overview {
     private _chartDataArray: any;
     
     itemsToSelect: string[] = [
-        'Temperature',
-        'Humidity',
-        'Pressure',
-        'Light Intensity'
+        'Temperature (°F)',
+        'Humidity (%RH)',
+        'Pressure (hPa)',
+        'Light Intensity (lux)'
     ];
     private _selectedItem: string = this.itemsToSelect[0];
     set selectedItem(item: string) {

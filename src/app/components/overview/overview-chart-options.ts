@@ -4,7 +4,7 @@ export const temperatureChartOptions: Chartist.ILineChartOptions = {
         },
         fullWidth: true,
         showArea: true,
-        showPoint: false,
+        showPoint: true,
         plugins: [
             Chartist.plugins.ctAxisTitle({
                 axisX: {
@@ -15,15 +15,6 @@ export const temperatureChartOptions: Chartist.ILineChartOptions = {
                         y: 20
                     },
                     textAnchor: 'middle'
-                },
-                axisY: {
-                    axisTitle: 'Temperature (°F)',
-                    axisClass: 'ct-axis-title',
-                    offset: {
-                        x: -35,
-                        y: 0
-                    },
-                    flipTitle: false
                 }
             })
         ]
@@ -35,7 +26,7 @@ export const temperatureChartOptions: Chartist.ILineChartOptions = {
         },
         fullWidth: true,
         showArea: true,
-        showPoint: false,
+        showPoint: true,
         plugins: [
             Chartist.plugins.ctAxisTitle({
                 axisX: {
@@ -46,15 +37,6 @@ export const temperatureChartOptions: Chartist.ILineChartOptions = {
                         y: 20
                     },
                     textAnchor: 'middle'
-                },
-                axisY: {
-                    axisTitle: 'Humidity (%RH)',
-                    axisClass: 'ct-axis-title',
-                    offset: {
-                        x: -35,
-                        y: 0
-                    },
-                    flipTitle: false
                 }
             })
         ]
@@ -66,7 +48,7 @@ export const temperatureChartOptions: Chartist.ILineChartOptions = {
         },
         fullWidth: true,
         showArea: true,
-        showPoint: false,
+        showPoint: true,
         plugins: [
             Chartist.plugins.ctAxisTitle({
                 axisX: {
@@ -77,15 +59,6 @@ export const temperatureChartOptions: Chartist.ILineChartOptions = {
                         y: 20
                     },
                     textAnchor: 'middle'
-                },
-                axisY: {
-                    axisTitle: 'Pressure (hPa)',
-                    axisClass: 'ct-axis-title',
-                    offset: {
-                        x: -35,
-                        y: 0
-                    },
-                    flipTitle: false
                 }
             })
         ]
@@ -97,7 +70,7 @@ export const temperatureChartOptions: Chartist.ILineChartOptions = {
         },
         fullWidth: true,
         showArea: true,
-        showPoint: false,
+        showPoint: true,
         plugins: [
             Chartist.plugins.ctAxisTitle({
                 axisX: {
@@ -108,15 +81,6 @@ export const temperatureChartOptions: Chartist.ILineChartOptions = {
                         y: 20
                     },
                     textAnchor: 'middle'
-                },
-                axisY: {
-                    axisTitle: 'Light Intensity (lux)',
-                    axisClass: 'ct-axis-title',
-                    offset: {
-                        x: -35,
-                        y: 0
-                    },
-                    flipTitle: false
                 }
             })
         ]
