@@ -76,10 +76,10 @@ export class Overview {
     }
     
     itemsToSelect: string[] = [
-        'Temperature',
-        'Humidity',
-        'Pressure',
-        'Light Intensity'
+        'Temperature (F)',
+        'Humidity (%RH)',
+        'Pressure (hPa)',
+        'Light Intensity (lux)'
     ];
     // chartUnits: string[] = [
     //   ' (F)',
@@ -112,11 +112,11 @@ export class Overview {
         pointerWidth: 20,
         arcColorFn: (percent) => {
             if(percent < (1/3)) {
-                return 'blue';
+                return '#FF0000';
             } else if (percent < (2/3)) {
-                return 'green';
+                return '#FFFF00';
             } else {
-                return 'red';
+                return '#00FF00';
             }
         },
         
